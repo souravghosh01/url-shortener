@@ -1,13 +1,13 @@
 const express = require('express')
 const connectDb = require('./models/connectDB')
 const urlRoute = require ('./routes/link') 
-const { getRedirected, getClicks } = require('./controllers/link')
+require('dotenv').config()
 
 const app = express()
 const PORT = 5000
+const uri = process.env.MONGO_URI;
 
-
- connectDb('mongodb://127.0.0.1:27017/url-shortner').then(() =>
+ connectDb(uri).then(() =>
  console.log("Mongodb connected")
 );
 
